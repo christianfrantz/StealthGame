@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!--
+    Google Play game services IDs.
+    Save this file as res/values/games-games-ids.xml in your project.
+    -->
+    <resources>
+        <string name="app_id">636500532092</string>
+        <string name="package_name">com.stealth.game</string>
+        <string name="achievement_1">CgkI_LaNk8MSEAIQAQ</string>
+        <string name="achievement_2">CgkI_LaNk8MSEAIQAg</string>
+        <string name="achievement_3">CgkI_LaNk8MSEAIQAw</string>
+        <string name="achievement_4">CgkI_LaNk8MSEAIQBA</string>
+        <string name="achievement_5">CgkI_LaNk8MSEAIQBQ</string>
+        <string name="achievement_6">CgkI_LaNk8MSEAIQBg</string>
+        <string name="achievement_7">CgkI_LaNk8MSEAIQBw</string>
+        <string name="leaderboard_leader">CgkI_LaNk8MSEAIQCQ</string>
+    </resources>
+
+
