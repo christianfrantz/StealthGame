@@ -6,6 +6,7 @@ import com.stealth.game.PlayServices.PlayServices;
 import com.stealth.game.Screens.PickClassScreen;
 import com.stealth.game.Screens.PlayScreen;
 import com.stealth.game.Screens.StartScreen;
+import com.stealth.game.Sprites.Player;
 
 public class MainGame extends Game {
 	public SpriteBatch batch;
@@ -29,8 +30,8 @@ public class MainGame extends Game {
 		setScreen(new StartScreen(this));
 	}
 
-	public void SetPlayScreen(){
-		setScreen(new PlayScreen(this));
+	public void SetPlayScreen(Player.PlayerClass playerClass){
+		setScreen(new PlayScreen(this, playerClass));
 	}
 	public void SetClassScreen() {
 		setScreen(new PickClassScreen(this));

@@ -46,12 +46,12 @@ public class PlayScreen implements Screen {
     private World world;
     private Box2DDebugRenderer debugRenderer;
 
-    private Player player;
+    public Player player;
 
     private RayHandler rayHandler;
     private Hud hud;
 
-    public PlayScreen(MainGame game) {
+    public PlayScreen(MainGame game, Player.PlayerClass playerClass) {
         this.game = game;
         gameCam = new OrthographicCamera();
         gamePort = new FitViewport(game.vWidth / MainGame.PPM, game.vHeight / MainGame.PPM, gameCam);
@@ -67,7 +67,7 @@ public class PlayScreen implements Screen {
         rayHandler = new RayHandler(world);
         rayHandler.setAmbientLight(0.01f, 0.01f, 0.01f, 0.01f);
 
-        player = new Player(world, rayHandler);
+        player = new Player(world, rayHandler, playerClass);
 
 
         BodyDef def = new BodyDef();

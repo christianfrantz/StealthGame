@@ -41,7 +41,7 @@ public class Player extends Sprite {
 
     public PlayerClass playerClass;
 
-    public Player(World world, RayHandler rayHandler){
+    public Player(World world, RayHandler rayHandler, PlayerClass playerClass){
         this.world = world;
         setupBody();
         setTexture(new Texture("player.png"));
@@ -56,7 +56,20 @@ public class Player extends Sprite {
         playerLight = new ConeLight(rayHandler, 32, Color.GOLD, 5, (getOriginX() / MainGame.PPM), (getOriginY() / MainGame.PPM), 270, 45);
         playerLight.attachToBody(body);
 
-        gunBase = new GunBase(5, 5, true);
+        switch (playerClass){
+            case CAMPER:
+                this.playerClass = playerClass;
+                gunBase = new GunBase(3, 3, true);
+                break;
+            case BASIC:
+                this.playerClass = playerClass;
+                gunBase = new GunBase(10, 10, true);
+                break;
+            case STEALTH:
+                this.playerClass = playerClass;
+                gunBase = new GunBase(6, 6, true);
+                break;
+        }
     }
 
     public void update(float dt, Camera gameCam, Hud hud){
