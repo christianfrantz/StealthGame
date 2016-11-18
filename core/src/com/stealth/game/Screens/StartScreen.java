@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.stealth.game.MainGame;
+import com.stealth.game.ServerStuff.PlayerClient;
 
 /**
  * Created by imont_000 on 11/13/2016.
@@ -52,6 +53,7 @@ public class StartScreen implements Screen {
         startGameButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                MainGame.playerClient = new PlayerClient();
                 mainGame.SetClassScreen();
             }
         });

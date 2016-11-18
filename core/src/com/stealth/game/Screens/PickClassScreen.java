@@ -3,6 +3,7 @@ package com.stealth.game.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -18,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.stealth.game.MainGame;
+import com.stealth.game.Sprites.Player;
 
 
 import javax.print.DocFlavor;
@@ -41,9 +43,13 @@ public class PickClassScreen implements Screen{
     private String camperSelected;
     private String stealthSelected;
 
+    private String serverConnected = "Connected to server";
+    private String serverNotConnected = "Disconnected from server";
+
     private ButtonGroup buttonGroup;
 
     Label classSelectedLabel;
+    Label serverStatusLabel;
 
     public PickClassScreen(MainGame game){
         this.mainGame = game;
@@ -57,8 +63,9 @@ public class PickClassScreen implements Screen{
         stealthSelected = "Stealth selected";
 
         classSelectedLabel = new Label(noneSelected, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        serverStatusLabel = new Label(serverNotConnected, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
-        Texture button = new Texture("startButton.png");
+        final Texture button = new Texture("startButton.png");
         Button.ButtonStyle bs = new Button.ButtonStyle();
         bs.up = new TextureRegionDrawable(new TextureRegion(button));
         startButton = new Button(bs);
@@ -91,6 +98,7 @@ public class PickClassScreen implements Screen{
         table.add(camperButton).expandX().padTop(10);
         table.row();
         table.add(classSelectedLabel).expandX().padTop(10);
+        table.add(serverStatusLabel).expandX().padTop(10);
 
         table.add(startButton).padBottom(10).expandX().expandY().bottom();
 
@@ -114,7 +122,25 @@ public class PickClassScreen implements Screen{
                classSelectedLabel.setText(camperSelected);
            }
         });
+
 */
+        startButton.addListener(new ClickListener(){
+           @Override
+            public void clicked(InputEvent event, float x, float y){
+               if(buttonGroup.getChecked() == null)
+                   return;
+               else if(buttonGroup.getChecked() == camperButton){
+                   mainGame.SetPlayScreen(Player.PlayerClass.CAMPER);
+               }
+               else if(buttonGroup.getChecked() == stealthButton){
+                   mainGame.SetPlayScreen(Player.PlayerClass.STEALTH);
+               }
+               else if(buttonGroup.getChecked() == basicButton){
+                   mainGame.SetPlayScreen(Player.PlayerClass.BASIC);
+               }
+           }
+        });
+
         stage.addActor(table);
 
         Gdx.input.setInputProcessor(stage);
@@ -127,6 +153,9 @@ public class PickClassScreen implements Screen{
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
         mainGame.batch.setProjectionMatrix(stage.getCamera().combined);
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
@@ -142,6 +171,7 @@ public class PickClassScreen implements Screen{
                 classSelectedLabel.setText(stealthSelected);
                 break;
         }
+        
     }
 
     @Override

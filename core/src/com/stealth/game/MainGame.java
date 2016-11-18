@@ -6,6 +6,7 @@ import com.stealth.game.PlayServices.PlayServices;
 import com.stealth.game.Screens.PickClassScreen;
 import com.stealth.game.Screens.PlayScreen;
 import com.stealth.game.Screens.StartScreen;
+import com.stealth.game.ServerStuff.PlayerClient;
 import com.stealth.game.Sprites.Player;
 
 public class MainGame extends Game {
@@ -14,6 +15,7 @@ public class MainGame extends Game {
 	public static final int vHeight = 1080;
 	public static final float PPM = 100;
 	public static PlayServices playServices;
+	public static PlayerClient playerClient;
 
 	public MainGame(PlayServices playServices){
 		this.playServices = playServices;
