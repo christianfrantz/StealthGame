@@ -2,6 +2,7 @@ package com.stealth.game.ServerStuff;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Client;
+import com.stealth.game.Sprites.Player;
 
 import java.io.IOException;
 
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class PlayerClient {
     public Client client;
     private String ipAddress = "127.0.0.1";
+    public static Player player;
     public static boolean hasConnection = false;
 
     public PlayerClient(){
@@ -39,5 +41,17 @@ public class PlayerClient {
         kryo.register(Packet.Packet0LoginRequest.class);
         kryo.register(Packet.Packet1LoginAnswer.class);
         kryo.register(Packet.Packet2Message.class);
+        kryo.register(Packet.Packet3AddPlayer.class);
+        kryo.register(Packet.Packet4RemovePlayer.class);
+        kryo.register(Packet.Packet5UpdatePlayer.class);
+        kryo.register(Packet.Packet6MovePlayer.class);
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 }

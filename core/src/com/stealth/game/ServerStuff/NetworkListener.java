@@ -13,7 +13,8 @@ public class NetworkListener extends Listener{
 
     private Client client;
 
-    public NetworkListener(){}
+    public NetworkListener(){
+    }
 
     @Override
     public void connected(Connection connection) {
@@ -35,6 +36,11 @@ public class NetworkListener extends Listener{
             }
         }else{
             connection.close();
+        }
+
+        if(o instanceof Packet5UpdatePlayer){
+            Packet5UpdatePlayer msg = (Packet5UpdatePlayer)o;
+            Log.info(msg.x + " " + msg.y);
         }
     }
 

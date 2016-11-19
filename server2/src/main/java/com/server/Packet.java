@@ -1,10 +1,10 @@
-package com.stealth.game.ServerStuff;
+package com.server;
 
 import com.badlogic.gdx.math.Vector2;
 import com.stealth.game.Sprites.Player;
 
 /**
- * Created by imont_000 on 11/17/2016.
+ * Created by imont_000 on 11/18/2016.
  */
 
 public class Packet {
@@ -13,9 +13,6 @@ public class Packet {
     public static class Packet2Message{String message;}
     public static class Packet3AddPlayer{Player player;}
     public static class Packet4RemovePlayer{}
-    public static class Packet5UpdatePlayer{public String name; public int x;
-        public int y;}
-    public static class Packet6MovePlayer{
-        public int x;
-        public int y;}
+    public static class Packet5UpdatePlayer{String name; int x, y;}
+    public static class Packet6MovePlayer{int x, y;}
 }

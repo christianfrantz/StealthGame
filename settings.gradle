@@ -1,1 +1,2 @@
+include ':server2'
 include 'desktop', 'android', 'ios', 'html', 'core', ':BaseGameUtils', ':kryonet-2.21-all'

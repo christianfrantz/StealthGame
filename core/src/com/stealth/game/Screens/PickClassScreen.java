@@ -102,28 +102,6 @@ public class PickClassScreen implements Screen{
 
         table.add(startButton).padBottom(10).expandX().expandY().bottom();
 
-        /*basicButton.addListener(new ClickListener(){
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                classSelectedLabel.setText(basicSelected);
-            }
-        });
-
-        stealthButton.addListener(new ClickListener(){
-           @Override
-            public void clicked(InputEvent event, float x, float y){
-               classSelectedLabel.setText(stealthSelected);
-           }
-        });
-
-        camperButton.addListener(new ClickListener(){
-           @Override
-            public void clicked(InputEvent event, float x, float y){
-               classSelectedLabel.setText(camperSelected);
-           }
-        });
-
-*/
         startButton.addListener(new ClickListener(){
            @Override
             public void clicked(InputEvent event, float x, float y){
@@ -160,7 +138,7 @@ public class PickClassScreen implements Screen{
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
 
-        switch (buttonGroup.getCheckedIndex()){
+        switch (buttonGroup.getCheckedIndex()) {
             case 0:
                 classSelectedLabel.setText(basicSelected);
                 break;
@@ -171,7 +149,6 @@ public class PickClassScreen implements Screen{
                 classSelectedLabel.setText(stealthSelected);
                 break;
         }
-        
     }
 
     @Override

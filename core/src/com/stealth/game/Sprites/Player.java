@@ -17,6 +17,8 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.stealth.game.GunBase;
 import com.stealth.game.Hud;
 import com.stealth.game.MainGame;
+import com.stealth.game.ServerStuff.Packet;
+import com.stealth.game.ServerStuff.PlayerClient;
 
 import box2dLight.ConeLight;
 import box2dLight.Light;
@@ -32,6 +34,7 @@ public class Player extends Sprite {
     public Sprite cursor;
     public Light playerLight;
     public GunBase gunBase;
+    public PlayerClient playerClient;
 
     public enum PlayerClass{
         BASIC,
@@ -70,6 +73,8 @@ public class Player extends Sprite {
                 gunBase = new GunBase(6, 6, true);
                 break;
         }
+
+        MainGame.playerClient.setPlayer(this);
     }
 
     public void update(float dt, Camera gameCam, Hud hud){
@@ -93,6 +98,12 @@ public class Player extends Sprite {
         body.setLinearDamping(2f);
 
         gunBase.updateGun(dt, this, world);
+
+        Packet.Packet6MovePlayer msg = new Packet.Packet6MovePlayer();
+        msg.x = (int)body.getPosition().x;
+        msg.y = (int)body.getPosition().y;
+
+        MainGame.playerClient.client.sendTCP(msg);
     }
 
     private void setupBody(){
